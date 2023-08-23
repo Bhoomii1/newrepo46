@@ -12,5 +12,28 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: pre build
+        run: ls -a
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup jdk
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: print java version
+        run: java -version
+      - name: compiling
+        run: javac Test.java
+      - name: Listing
+        run: pwd
+      - name: execute
+        run: java Test
+      - name: build
+        run: echo mvn -B package --file pom.xml
+      - name: list env
+        run: env
+      - name: perform task
+        run: sh script.sh
+        shell: bash
 
-      # Add steps for the triggered workflow
+      
